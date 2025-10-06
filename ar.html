@@ -81,6 +81,76 @@
             margin-top: 30px;
         }
     </style>
+    <style>
+        .floating-offer-btn {
+            position: fixed;
+            bottom: 25px;
+            left: 25px; /* For RTL layout */
+            background-color: #28a745; /* A green color for call buttons */
+            color: white;
+            padding: 15px;
+            border-radius: 50%; /* Make it circular */
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            text-decoration: none;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .floating-offer-btn .offer-text {
+            position: absolute;
+            left: 80px; /* Position text to the right of the button */
+            background-color: #95191c; /* Theme color from the site */
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            white-space: nowrap;
+            font-size: 15px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .floating-offer-btn:hover {
+            background-color: #218838; /* Darker green on hover */
+            transform: scale(1.1);
+            animation-play-state: paused;
+            color: white;
+            text-decoration: none;
+        }
+
+        .floating-offer-btn:hover .offer-text {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(40, 167, 69, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+            }
+        }
+        
+        /* On mobile, just show the button, not the hover text on the side */
+        @media (max-width: 768px) {
+            .floating-offer-btn .offer-text {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
 <body><!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8SPVMWP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) -->
@@ -534,7 +604,7 @@
                                             نقل الاثاث
                                         </h6>
                                         <h6 class="cust-text">
-                                            <a href="ar/service/2/%D9%86%D9%82%D9%84-%D8%A7%D9%84%D8%A7%D8%AB%D8%A7%D8%AB.html">قراءة
+                                            <a href="ar/service/2/%D9%86%D9%82%D9%84-%D8%A7%D9%84%D8%A7%D8%AB%D8%A7%D8%A7%D8%AB.html">قراءة
                                                 المزيد
                                             </a>
                                         </h6>
@@ -777,6 +847,12 @@
        
     </div>
 </footer>
+
+<a href="tel:01098426971" class="floating-offer-btn">
+    <i class="fa fa-phone"></i>
+    <span class="offer-text">خصم 25% لفترة محدودة!</span>
+</a>
+
 <a href="#0" class="cd-top">Top</a>
     <!-- JAVASCRIPTS -->
 <script src="website/assets/js/lib/jquery-3.6.0.min.js"></script>
